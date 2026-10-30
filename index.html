@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Expense Tracker</title>
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Main Container to center the app on the screen -->
+  <div class="app-container">
+
+    <!-- 1. Coloured Header Section -->
+    <header class="app-header">
+      <h1>Student Expense Tracker</h1>
+      <p>Keep track of your college budget in Rupees (₹)</p>
+    </header>
+
+    <!-- 2. Big Bold Total Section -->
+    <section class="total-section">
+      <div class="total-card">
+        <span class="total-label">Total Amount Spent:</span>
+        <span class="total-amount">₹<span id="total-amount">0.00</span></span>
+      </div>
+    </section>
+
+    <!-- 3. Category Spending Breakdown Section (Food, Travel, Books, Fun, Other) -->
+    <section class="category-breakdown-section">
+      <h2>Spending by Category</h2>
+      <div class="category-grid">
+        <div class="category-stat-card card-food">
+          <span class="stat-category-name">Food</span>
+          <span class="stat-category-amount" id="cat-total-food">₹0.00</span>
+        </div>
+        <div class="category-stat-card card-travel">
+          <span class="stat-category-name">Travel</span>
+          <span class="stat-category-amount" id="cat-total-travel">₹0.00</span>
+        </div>
+        <div class="category-stat-card card-books">
+          <span class="stat-category-name">Books</span>
+          <span class="stat-category-amount" id="cat-total-books">₹0.00</span>
+        </div>
+        <div class="category-stat-card card-fun">
+          <span class="stat-category-name">Fun</span>
+          <span class="stat-category-amount" id="cat-total-fun">₹0.00</span>
+        </div>
+        <div class="category-stat-card card-other">
+          <span class="stat-category-name">Other</span>
+          <span class="stat-category-amount" id="cat-total-other">₹0.00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Add Expense Form Section -->
+    <section class="form-container">
+      <h2>Add New Expense</h2>
+      <form id="expense-form">
+
+        <!-- Expense Name -->
+        <div class="form-group">
+          <label for="expense-name">Expense Name</label>
+          <input 
+            type="text" 
+            id="expense-name" 
+            placeholder="e.g. Canteen Lunch, Bus Pass, Lab Manual" 
+            required
+          >
+        </div>
+
+        <!-- Expense Amount in Rupees (₹) -->
+        <div class="form-group">
+          <label for="expense-amount">Amount in Rupees (₹)</label>
+          <input 
+            type="number" 
+            id="expense-amount" 
+            placeholder="e.g. 150" 
+            min="1" 
+            step="any" 
+            required
+          >
+        </div>
+
+        <!-- Category Dropdown -->
+        <div class="form-group">
+          <label for="expense-category">Category</label>
+          <select id="expense-category" required>
+            <option value="" disabled selected>-- Select a Category --</option>
+            <option value="Food">Food (Canteen, Groceries, Snacks)</option>
+            <option value="Travel">Travel (Bus, Auto, Metro, Petrol)</option>
+            <option value="Books">Books (Textbooks, Stationery, Printing)</option>
+            <option value="Fun">Fun (Movies, Outings, Hangouts)</option>
+            <option value="Other">Other (Recharge, Laundry, Misc)</option>
+          </select>
+        </div>
+
+        <!-- Date Input -->
+        <div class="form-group">
+          <label for="expense-date">Date</label>
+          <input 
+            type="date" 
+            id="expense-date" 
+            required
+          >
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="add-expense-btn" class="btn-submit">
+          Add Expense
+        </button>
+      </form>
+    </section>
+
+    <!-- 5. Expenses History Section with Filter Dropdown -->
+    <section class="expenses-section">
+      <div class="expenses-header">
+        <h2>Expenses History</h2>
+        
+        <!-- Filter Dropdown to show only one category at a time -->
+        <div class="filter-wrapper">
+          <label for="category-filter" class="filter-label">Filter:</label>
+          <select id="category-filter" class="category-filter-select">
+            <option value="all">All Categories</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Books">Books</option>
+            <option value="Fun">Fun</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Empty list where expenses will appear dynamically -->
+      <ul id="expense-list" class="expense-list">
+        <!-- JavaScript will populate items here -->
+      </ul>
+
+      <!-- Empty state message -->
+      <p id="no-expenses-msg" class="empty-message">
+        No expenses found. Add an expense above to get started!
+      </p>
+    </section>
+
+  </div>
+
+  <!-- Link to external JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
